@@ -28,13 +28,16 @@ export class EditcontactComponent implements OnInit {
   }
 
   saveContact(idCont:number){
+    this.errorMessage = "";
     console.log('id before editContact',idCont);
     this.contactsService.updateContactById(idCont)
       .subscribe(data => {
-        console.log("success update")
+        this.errorMessage = "Le contact a été modifié avec succès";
+        console.log("success update");
         this.contact=data;
       }, 
         error => {
+        this.errorMessage = "Problème lors de la mise à jour du contact";
         console.log("error after update : ",error);
       });
     }

@@ -42,11 +42,11 @@ export class ContactService {
   }
 
   updateContactById(idContact: number) {
-    return this.http.get<Contact>(`${this.JAVA_API_SERVER}/contacts/update/` + idContact);
+    return this.http.put<Contact>(`${this.JAVA_API_SERVER}/contacts/update/` + idContact,null);
   }
 
   deleteContact(idContact: number) {
-    return this.http.get<Contact>(`${this.JAVA_API_SERVER}/contact/delete/` + idContact);
+    return this.http.delete<Contact>(`${this.JAVA_API_SERVER}/contact/delete/` + idContact);
   }
 
   getContacts(motCle: string, page: number, size: number) {
