@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <span class="anchor" id="formContact"></span>
+            <button type="button" class="btn btn-dark my-2" (click)="goBack()">< Back</button>
+            <hr>
+
+            <!-- form user info -->
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3 class="mb-0">Modifier le contact</h3>
+                </div>
+                <div class="card-body">
+                    <span class="text-danger">{{errorMessage}}</span>
+                    <form class="form" role="form" autocomplete="off">
+                        <fieldset>
+                            <label for="nom" class="mb-0">Nom</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <input type="text" name="nom" id="nom" class="form-control"  [(ngModel)]="contact.nom">
+                                </div>
+                            </div>
+                            <label for="prenom" class="mb-0">Prenom</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <input type="text" name="prenom" id="prenom" class="form-control" [(ngModel)]="contact.prenom">
+                                </div>
+                            </div>
+                            <label for="email" class="mb-0">Email</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <input type="text" name="email" id="email" class="form-control"  [(ngModel)]="contact.email">
+                                </div>
+                            </div>
+                            <label for="naissance" class="mb-0">Date naissance</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <input type="text" name="naissance" id="naissance" class="form-control" [(ngModel)]="contact.dateNaissance">
+                                </div>
+                            </div>
+                            <label for="tel" class="mb-0">Telephone</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <input type="text" name="tel" id="tel" class="form-control"  [(ngModel)]="contact.tel">
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-lg float-right" (click)="saveContact(contact.id)">Modifier</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- /form user info -->
+
+        </div>
+
+    </div>
+
+</div>

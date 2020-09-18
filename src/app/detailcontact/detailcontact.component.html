@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <span class="anchor" id="formContact"></span>
+            <button type="button" class="btn btn-dark my-2" (click)="goBack()">< Back</button>
+            <hr>
+
+            <!-- form user info -->
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3 class="mb-0">Detail du contact</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" role="form" autocomplete="off">
+                        <fieldset>
+                            <div class="row mb-1">
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">Nom</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">{{contact.nom}}</label>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">Prenom</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">{{contact.prenom}}</label>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">email</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="mb-0">{{contact.email}}</label>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">Date naissance</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">{{contact.dateNaissance}}</label>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">Téléphone</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">{{contact.tel}}</label>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">Photo</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label  class="mb-0">test</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- /form user info -->
+
+        </div>
+
+    </div>
+
+</div>

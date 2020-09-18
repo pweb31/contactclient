@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Liste de contacts</h1>
+  
+    <a role="button" [routerLink]="['/newContact']"  class="btn btn-success mb-2 float-right">Creer un nouveau contact</a>
+    
+    <table class="table table-bordered">
+      <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de naissance</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let contact of listcontacts">
+        <td>{{contact.id}}</td>
+        <td>{{contact.nom}}</td>
+        <td>{{contact.prenom}}</td>
+        <td>{{contact.dateNaissance}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{contact.tel}}</td>
+        <td>
+          <a role="button" class="btn btn-info" (click)="detailContact(contact.id)">View</a>
+          <a role="button"  class="btn btn-primary" (click)="editContact(contact.id)">Edit</a>
+          <button type="button" class="btn btn-danger" (click)="deleteContact(contact.id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+
+ </div>
