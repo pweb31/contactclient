@@ -4,6 +4,8 @@ import { Contact } from '../models/contact';
 import { ContactService } from '../services/contact.service';
 import { Utilisateur } from '../models/utilisateur';
 import { NgForm } from '@angular/forms';
+import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact',
@@ -22,10 +24,11 @@ export class ContactComponent implements OnInit {
   pages: Array<number>;
   users;
   user;
+  dtOptions: any = {};
   selectedUtilisateur: Utilisateur = { id : null , username: null, password: null, email: null, roles: null};
 
 
-  constructor(private contactsService: ContactService, private router: Router) { 
+  constructor(private contactsService: ContactService, private router: Router, private location: Location) { 
     // this.checkUser();
     this.contactsService.getAllContacts().subscribe((categories: Contact[])=>{
       this.listcontacts = categories;
@@ -35,8 +38,40 @@ export class ContactComponent implements OnInit {
 
 
   ngOnInit() {
+    this.initDataTables();
     this.listUsers();
     console.log("users list : ",this.listUtilisateurs);
+  }
+
+  initDataTables() {
+    this.dtOptions = {
+    //   language: {
+    //     processing:     "Traitement en cours...",
+    //     search:         "Rechercher&nbsp;:",
+    //     lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+    //     info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+    //     infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+    //     infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+    //     infoPostFix:    "",
+    //     loadingRecords: "Chargement en cours...",
+    //     zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+    //     emptyTable:     "Aucune donnée disponible dans le tableau",
+    //     paginate: {
+    //         first:      "Premier",
+    //         previous:   "Pr&eacute;c&eacute;dent",
+    //         next:       "Suivant",
+    //         last:       "Dernier"
+    //     },
+    //     aria: {
+    //         sortAscending:  ": activer pour trier la colonne par ordre croissant",
+    //         sortDescending: ": activer pour trier la colonne par ordre décroissant"
+    //     }
+    // },
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25],
+      processing: true,
+    };
   }
 
   checkUser() {
@@ -133,5 +168,52 @@ detailContact(id:number){
   this.contactsService.deleteContact(id)
   .subscribe(data=>{this.ngOnInit();});
   }
+
+  deleteuser(id:number)
+{
+
+
+  Swal.fire({
+    title: 'Voulez-vous supprimer ce contact?',
+    //text: 'You will not be able to recover this file!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Supprimer!',
+    cancelButtonText: 'Annuler'
+  }).then((result) => {
+    if (result.value) {
+       return this.contactsService.deleteContact(id).subscribe(data => {
+        Swal.fire(
+          'Effectué!',
+          'Le contact a été supprimé.',
+          'success'
+        )
+       // this.router.navigate(["/contacts"]);
+       //this.ngOnInit();
+       location.reload();
+  },error => {
+    console.log("Erreur lors de la suppression du contact : ",error);
+  });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      )
+    }
+  })
+
+
+//  return this.contactsService.deleteContact(id).subscribe(data => {
+//     Swal.fire({
+//       title: 'Hurray!!',
+//       text:   "User has been deleted successfully.",
+//       icon: 'success'
+//     });
+    
+//   },error => {
+//     console.log("Form error : ",error);
+//   });
+}
 
 }

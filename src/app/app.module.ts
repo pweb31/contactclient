@@ -14,6 +14,7 @@ import { NewcontactComponent } from './newcontact/newcontact.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { DetailcontactComponent } from './detailcontact/detailcontact.component';
+//import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DetailcontactComponent } from './detailcontact/detailcontact.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+    // DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
